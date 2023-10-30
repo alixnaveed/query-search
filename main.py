@@ -4,6 +4,8 @@ import functions_framework
 
 def query_from_db():
 
+#comment to check
+
     db_file1 = 'quransingle.db'
     db_file2 = 'hadissingle.db'
     db_file3 = 'duasingle.db'
