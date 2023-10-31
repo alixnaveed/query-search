@@ -1,5 +1,4 @@
 steps:
-  # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: [
             'build',
@@ -8,10 +7,11 @@ steps:
             '.'
           ]
 
-  # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push',  'us-central1-docker.pkg.dev/sampleprojectforusman/queryfunctest/my-app:${SHORT_SHA}']
 
-# Store images in Google Artifact Registry 
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['functions', 'deploy', 'queryfunctest', '--source=.']
+
 images:
   - us-central1-docker.pkg.dev/sampleprojectforusman/queryfunctest/my-app:${SHORT_SHA}
